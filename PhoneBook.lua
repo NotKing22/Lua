@@ -80,23 +80,18 @@ while running do
         for i = 1, #contatos do
             print("[" .. i .. "] - nome: [" .. contatos[i].nome .. "] telefone: [" .. contatos[i].telefone .. "]")
         end
-
         print("[AGENDA] Total de usuários cadastrados: " .. #contatos)
 
     elseif option == 2 then
         print("[AGENDA] Informe o nome do usuario: ")
         local nome = io.read()
-
         print("[AGENDA] Informe o numero de telefone: ")
         local telefone = io.read()
-
         if nome == "" or telefone == "" then
             print("\n[AGENDA] Nome e telefone não podem ficar vazios.\n")
-
         elseif not contato_existe(telefone) then
             adicionar_contato(nome, telefone)
             print("\n[AGENDA] Contato adicionado a agenda.\n")
-
         else
             print("\n[AGENDA] Este telefone já existe na agenda.\n")
         end
@@ -104,15 +99,11 @@ while running do
     elseif option == 3 then
         print("[AGENDA] Informe o telefone que deseja apagar da agenda:")
         local telefone = io.read()
-
         local encontrado = false
-
         for i = 1, #contatos do
             if contatos[i].telefone == telefone then
                 table.remove(contatos, i)
-
                 print("\n[AGENDA] Número removido da agenda.\n")
-
                 encontrado = true
                 break
             end
@@ -125,30 +116,22 @@ while running do
     elseif option == 4 then
         print("[AGENDA] Informe o telefone do contato que deseja editar:")
         local telefone = io.read()
-
         local encontrado = false
-
         for i = 1, #contatos do
             if contatos[i].telefone == telefone then
                 print("[AGENDA] Informe o novo nome:")
                 local novo_nome = io.read()
-
                 print("[AGENDA] Informe o novo telefone:")
                 local novo_telefone = io.read()
-
                 if novo_nome == "" or novo_telefone == "" then
                     print("\n[AGENDA] Nome e telefone não podem ficar vazios.\n")
-
                 elseif novo_telefone ~= telefone and contato_existe(novo_telefone) then
                     print("\n[AGENDA] Este telefone já existe na agenda.\n")
-
                 else
                     contatos[i].nome = novo_nome
                     contatos[i].telefone = novo_telefone
-
                     print("\n[AGENDA] Contato editado com sucesso.\n")
                 end
-
                 encontrado = true
                 break
             end
@@ -160,14 +143,10 @@ while running do
 
     elseif option == 5 then
         contatos = {}
-
         print("\n[AGENDA] Todos os contatos foram removidos.\n")
-
     elseif option == 6 then
         running = false
-
         print("\n[AGENDA] Programa encerrado.\n")
-
     else
         print("\n[AGENDA] Opção inválida.\n")
     end
